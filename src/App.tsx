@@ -77,7 +77,11 @@ function App() {
 
       {pokemonEscolhido && (
         <div>
-          <p><b>Nome do Pokémon:</b> {pokemonEscolhido.name}</p> {/* Exibe o nome do Pokémon escolhido */}
+          <p>
+            <b>Nome do Pokémon:</b> {pokemonEscolhido.name} {/* Exibe o nome do Pokémon escolhido */} 
+            <br/>
+            <b>Código do Pokémon:</b> {pokemonEscolhido.id} {/* Exibe o codigo do Pokémon escolhido */}
+          </p>
         </div>
       )}
 
