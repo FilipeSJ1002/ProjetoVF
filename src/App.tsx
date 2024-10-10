@@ -37,7 +37,7 @@ function App() {
       <form onSubmit={(e) => {
         e.preventDefault()
         console.log(inputValue)
-      }}>
+      }}> 
         <div>
           <label>Nome: </label>
           <input type="text" name="nome" value={inputValue} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)} />
@@ -60,6 +60,7 @@ function App() {
           .catch((error: any) => {
             console.error("Erro ao buscar o Pokémon", error)
             setPokemonEscolhido(null) // Limpa o estado se houver erro
+            alert("Erro, Pokémon não encontrado!")
           })
       }}>
         <div>
@@ -90,3 +91,4 @@ function App() {
 }
 
 export default App
+
