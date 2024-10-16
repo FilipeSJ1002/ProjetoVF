@@ -7,25 +7,25 @@ import ProtectedRoutes from "./components/ProtectedRoutes"
 import Post from "./pages/Post"
 import Testes from "./pages/Testes"
 import Usuario from "./pages/Usuario"
+import { useAuth } from "./contexts/AuthContext"
+import Navbar from "./components/Navbar"
+import ToDo from "./pages/ToDo"
 
 
 function App() {
-    const autenticated = true
+  const {isLoggedIn} = useAuth()
+
 
   return(
     <div>
-     <nav>
-      <Link to="/">Home</Link>
-      {autenticated && <Link to="/pokemon">Pokémon</Link>}
-      {autenticated && <Link to="/post">Post</Link>}
-      <Link to="/testes">Testes</Link>
-      <Link to="/usuario">Usuario</Link>
-     </nav>
+      <Navbar/>
+
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/pokemon" element={<ProtectedRoutes><Pokemon/></ProtectedRoutes>} />
         <Route path="/post" element={<ProtectedRoutes><Post/></ProtectedRoutes>} />
         <Route path="/testes" element={<Testes/>} />
+        <Route path="/todo" element={<ToDo/>} />
         <Route path="/usuario" element={<Usuario/>} />
         <Route path="*" element={<NotFound/>} />
       </Routes>

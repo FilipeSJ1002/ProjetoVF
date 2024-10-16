@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react"
-import ProtectedRoutes from "../components/ProtectedRoutes"
+import { useState } from "react"
+import { useAuth } from "../contexts/AuthContext"
 
 function Usuario() {
     const [tipoUsuario, setTipoUsuario] = useState("")
     const [nomeUsuario, setNomeUsuario] = useState("")
     const [senhaUsuario, setSenhaUsuario] = useState("")
 
+    const {setIsLoggedIn} = useAuth()
+
     const autenticarUsuario = () => {
         if (nomeUsuario === "admin" && senhaUsuario === "admin") {
             setTipoUsuario("admin");
-            ProtectedRoutes.autenticated = true;
+            setIsLoggedIn(true);
         } else {
             setTipoUsuario("comum");
-            ProtectedRoutes.autenticated = false;
+            setIsLoggedIn(false);
         }
 
         // Agora o console.log só será chamado quando o botão for clicado
@@ -30,25 +32,28 @@ function Usuario() {
                     e.preventDefault();
                     autenticarUsuario();
                 }}>
-                    <label>Nome: </label>
-                    <input
-                        type="text"
-                        name="nome"
-                        value={nomeUsuario}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            setNomeUsuario(e.target.value)
-                        }
-                    />
-                    <label>Senha: </label>
-                    <input
-                        type="password"
-                        name="senha"
-                        value={senhaUsuario}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            setSenhaUsuario(e.target.value)
-                        }
-                    />
-                    <br/><br/>
+                    <div>
+                        <label>Nome: </label>
+                        <input
+                            type="text"
+                            name="nome"
+                            value={nomeUsuario}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                setNomeUsuario(e.target.value)
+                            }
+                        />
+                        <br/>
+                        <label>Senha: </label>
+                        <input
+                            type="password"
+                            name="senha"
+                            value={senhaUsuario}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                setSenhaUsuario(e.target.value)
+                            }
+                        />
+                    </div>
+                    <br/>
                     <button type="submit">Click Aqui</button>
                 </form>
             </div>
