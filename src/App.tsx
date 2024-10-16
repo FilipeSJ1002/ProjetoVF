@@ -1,5 +1,5 @@
 
-import { Link, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Pokemon from "./pages/Pokemon"
 import NotFound from "./pages/NotFound"
@@ -7,14 +7,11 @@ import ProtectedRoutes from "./components/ProtectedRoutes"
 import Post from "./pages/Post"
 import Testes from "./pages/Testes"
 import Usuario from "./pages/Usuario"
-import { useAuth } from "./contexts/AuthContext"
 import Navbar from "./components/Navbar"
 import ToDo from "./pages/ToDo"
 
 
 function App() {
-  const {isLoggedIn} = useAuth()
-
 
   return(
     <div>

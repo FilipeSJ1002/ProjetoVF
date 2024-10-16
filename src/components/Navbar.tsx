@@ -1,5 +1,5 @@
 
-import { Box, Flex, HStack, Link, Stack } from '@chakra-ui/react'
+import { Box, Flex, HStack, Link } from '@chakra-ui/react'
 import { NavLink as RouterLink } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
